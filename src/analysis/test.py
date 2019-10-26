@@ -12,9 +12,14 @@ if __name__ == '__main__':
   args = parser.parse_args()
 
   nlp = NLP()
+  threshold = 0.01
 
   json_file = args.json_file
   with open(json_file) as f:
     data = json.load(f)
     for obj in data['data']:
-      print(nlp.get_entities(obj['content'], 0.01))
+      
+      dict_json = {'document_sentiment': nlp.get_whole_sentiment(obj['content']),
+                    'entities': nlp.get_entities(obj['content'], threshold)}
+      with open('test_output.json', 'w') as fp:
+        json.dump(dict_json, fp)
