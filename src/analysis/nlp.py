@@ -2,7 +2,6 @@
 from google.cloud import language
 from google.cloud.language import enums
 from google.cloud.language import types
-from counter_point.nlp.topic import Topic
 
 class NLP:
     # Constructor
@@ -20,11 +19,11 @@ class NLP:
         return api_response.document_sentiment
 
 
-    def get_topics(self,content,salience_threshold,language='en',
+    def get_entities(self,content,salience_threshold,language='en',
                 type_=enums.Document.Type.PLAIN_TEXT, encoding_type=enums.EncodingType.UTF8):
         # print('getting topics')
         # topics list
-        topics = []
+        entities = []
 
         # call API to get entity analysis
         document = {"content": content, "type": type_, "language": language}
@@ -41,7 +40,8 @@ class NLP:
         for entity in api_response.entities:
             entity_salience = entity.salience
             if entity_salience > salience_threshold:
-                topics.append(Topic(entity.name,enums.Entity.Type(entity.type).name,
-                                    entity_salience,entity.sentiment))   
+              entities.append(entity.name)
+                # topics.append(Topic(entity.name,enums.Entity.Type(entity.type).name,
+                #                     entity_salience,entity.sentiment))   
 
-        return topics
+        return entities
