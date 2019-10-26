@@ -3,7 +3,6 @@
 Python 3
 
 ## Setting up NLP Analysis
----
 
 https://cloud.google.com/natural-language/docs/quickstart
 
