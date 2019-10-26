@@ -16,7 +16,8 @@ class NLP:
         # call API to get entity analysis
         document = {"content": content, "type": type_, "language": language}
         api_response = self.client.analyze_sentiment(document, encoding_type=encoding_type)
-        return api_response.document_sentiment
+        return {'score':api_response.document_sentiment.score,
+                'magnitude':api_response.document_sentiment.magnitude}
 
 
     def get_entities(self,content,salience_threshold,language='en',
