@@ -64,14 +64,14 @@ class NLP:
   #     'score':double, 
   #     'magnitude':double
   #   },
-  #   'entities': {
+  #   ['entities': {
   #     'value': string, 
   #     'type': string, 
   #     'salience': double, 
   #     'sentiment': {
   #       'score': double, 
   #       'magnitude': double}
-  #     }
+  #     }]
   #   }
   # }
   def analyze(self,content,salience_threshold,language='en',
