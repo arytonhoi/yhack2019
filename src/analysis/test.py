@@ -7,7 +7,7 @@ import argparse
 import json
 
 
-class Media_Analyzer:
+class MediaAnalyzer:
   # constructor
   def __init__(self):
     self.nlp = NLP()
@@ -28,6 +28,9 @@ class Media_Analyzer:
       with open(output_json, 'w') as fp:
         json.dump(results, fp)
 
+  # create a MediaPost object based on what MediaAnalyzer was able to scrape
+  
+
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
@@ -38,5 +41,16 @@ if __name__ == '__main__':
   input_json = args.json_file
   output_json = args.out
 
-  media_analyzer = Media_Analyzer()  
-  media_analyzer.analyze_media_posts(input_json, output_json)
+  MediaAnalyzer = MediaAnalyzer()  
+  MediaAnalyzer.analyze_media_posts(input_json, output_json)
+
+
+class MediaPost:
+
+  def __init__(self):
+    self.key_words = []
+    self.sentiment = ""
+    self.location = ""
+    self.source = ""
+    self.date = ""
+    self.employees = []
