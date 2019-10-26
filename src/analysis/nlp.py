@@ -37,11 +37,18 @@ class NLP:
         # print('Text: {}'.format(text))
         # print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
 
+        
+
         for entity in api_response.entities:
+
+
             entity_salience = entity.salience
             if entity_salience > salience_threshold:
-              entities.append(entity.name)
-                # topics.append(Topic(entity.name,enums.Entity.Type(entity.type).name,
-                #                     entity_salience,entity.sentiment))   
+
+                entities.append({'value': entity.name, 
+                                'type': enums.Entity.Type(entity.type).name, 
+                                'salience': entity.salience, 
+                                'sentiment': {'score': entity.sentiment.score, 
+                                            'magnitude': entity.sentiment.magnitude}})
 
         return entities
