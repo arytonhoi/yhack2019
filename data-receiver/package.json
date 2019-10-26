@@ -1,0 +1,15 @@
+{
+  "name": "data-receiver",
+  "version": "1.0.0",
+  "description": "receives data via post requests, and saves it to a local file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
