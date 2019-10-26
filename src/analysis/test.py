@@ -17,4 +17,4 @@ if __name__ == '__main__':
   with open(json_file) as f:
     data = json.load(f)
     for obj in data['data']:
-      print(nlp.get_whole_sentiment(obj['content']))
+      print(nlp.get_entities(obj['content'], 0.01))
