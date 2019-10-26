@@ -12,7 +12,7 @@ var writeStream = fs.createWriteStream(saveFilename);
 
 app.post("/saveData", (req, res) => {
     console.log(req.body);    
-    writeStream.write(JSON.stringify(req.body) + "\n");    
+    writeStream.write(JSON.stringify(req.body) + ",\n");    
     res.send("ok");
 });
 
