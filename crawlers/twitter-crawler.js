@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const axios = require('axios');
 
 (async () => {
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({ headless: true, args: ["--disable-dev-shm-usage", "--disable-gpu", "--no-sandbox"]});
     const page = await browser.newPage();
     await page.goto("https://twitter.com/");
     await page.waitFor("a.js-nav.StaticLoggedOutHomePage-buttonLogin");
