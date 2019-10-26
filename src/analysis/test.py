@@ -22,7 +22,7 @@ class MediaAnalyzer:
       # create a list of MediaPost objects based on what MediaAnalyzer was able to scrape
       posts = []
       for media_post in data['data']:
-        print(media_post)
+        # print(media_post)
         nlp_result = self.nlp.analyze(media_post, salience_threshold)
         nlp_result['username'] = media_post['username']
         nlp_results.append(nlp_result)
@@ -44,11 +44,11 @@ class MediaAnalyzer:
                               locations,
                               employees))
 
-        print(posts[-1].key_words)
-        print(posts[-1].sentiment_score)
-        print(posts[-1].locations)
-        print(posts[-1].employees)
-        print('========================================')
+        # print(posts[-1].key_words)
+        # print(posts[-1].sentiment_score)
+        # print(posts[-1].locations)
+        # print(posts[-1].employees)
+        # print('========================================')
         
       results = {'results':nlp_results}
 
@@ -80,6 +80,4 @@ if __name__ == '__main__':
   output_json = args.out
 
   MediaAnalyzer = MediaAnalyzer()  
-  MediaAnalyzer.analyze_media_posts(input_json, output_json)
-
-
+  posts = MediaAnalyzer.analyze_media_posts(input_json, output_json)
