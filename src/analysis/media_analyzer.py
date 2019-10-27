@@ -20,34 +20,39 @@ class MediaAnalyzer:
         key_words = []
         locations = []
         employees = []
-
-        # print(media_post)
-        # if categories exists add location (ie tripadvisor)
-        if 'categories' in media_post:
-          locations = media_post['categories'][0].split('-')
+        source = media_post['source']
 
         # api call
         raw_nlp_result = self.nlp.analyze(media_post, salience_threshold)
-        # get username and refine
-        i = 1 if 'wrote' in "".join(media_post['username'].split()[0:3]) else 2
-        raw_nlp_result['username'] = "".join(media_post['username'].split()[0:i])
-        raw_nlp_result['source'] = media_post['source']
-        
+        raw_nlp_result['source'] = source
+
+        # if source is tripadvisor get location, username, and date
+        if source == 'tripadvisor':
+          locations = media_post['categories'][0].split('-')
+          i = media_post['username'].split().index('wrote')
+          raw_nlp_result['username'] = "".join(media_post['username'].split()[0:i])
+          first_line = media_post['username'].split('\n')[0]
+          j = first_line.split().index('review')
+          raw_nlp_result['date'] = "".join(first_line.split()[j + 1:])
+        elif source == 'twitter':
+          raw_nlp_result['username'] = media_post['content'].split()[0]
+          raw_nlp_result['date'] = ""
 
         # get data for refined result
         for entity in raw_nlp_result['entities']:
           # throw away handles
-          if not '@' in entity['value']:
+          if (not '@' in entity['value']) and (not 'JetBlue' in entity['value']):
             key_words.append(entity['value'])
-          if entity['type'] == 'LOCATION':
-            locations.append(entity['value'])
-          if entity['type'] == 'PERSON':
-            employees.append(entity['value'])
+            if entity['type'] == 'LOCATION':
+              locations.append(entity['value'])
+            if entity['type'] == 'NAME':
+              employees.append(entity['value'])
 
         # get refined result
         refined_result = {}
-        refined_result['username'] = "".join(media_post['username'].split()[0:i])
-        refined_result['source'] = media_post['source']
+        refined_result['username'] = raw_nlp_result['username']
+        refined_result['source'] = source
+        refined_result['date'] = raw_nlp_result['date']
         refined_result['sentiment_score'] = raw_nlp_result['document_sentiment']['score']
         refined_result['sentiment_magnitude'] = raw_nlp_result['document_sentiment']['magnitude']
         refined_result['keywords'] = key_words
@@ -55,10 +60,11 @@ class MediaAnalyzer:
         refined_result['employees'] = employees
         refined_result['content'] = media_post['content']
 
-        raw_nlp_results.append(raw_nlp_result)
-        refined_nlp_results.append(refined_result)
-        print(refined_result)
-        print("==========")
+        if not 'JetBlue' in refined_result['username']:
+          raw_nlp_results.append(raw_nlp_result)
+          refined_nlp_results.append(refined_result)
+          print(refined_result)
+          print("==========")
 
       raw_results = {'results':raw_nlp_results}
       refined_results = {'results':refined_nlp_results}
