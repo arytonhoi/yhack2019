@@ -79,7 +79,6 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-
 }
 
 .textPanel .bolded {
@@ -120,23 +119,33 @@
 /*=================================*/
 
 .filterPanel {
-
+	/*display: flex;*/
+	padding-top: 6px;
 }
 
 .filterPanel .header {
-
 }
 
 .filterPanel .header .title {
-
+	font-family: SF-Pro-Bold;
+	font-size: 24px;
+	margin-top: 40px;
+	margin-left: 30px;
+	color: #01205B;
 }
 
 .filterPanel .header .titleText {
-
+	font-family: SF-Pro-Regular;
+	font-size: 15px;
+	line-height: 1.4;
+	margin-top: 10px;
+	margin-left: 30px;
+	color: #01205B;
 }
 
 .filterPanel .search {
-
+	margin-top: 30px;
+	margin-left: 30px;
 }
 
 .filterPanel .search .searchInput {
@@ -144,11 +153,18 @@
 }
 
 .filterPanel .terms {
-
+	display: flex;
+	margin-top: 20px;
+	margin-left: 30px;
 }
 
 .filterPanel .terms .searchTerm {
-
+	font-family: SF-Pro-Regular;
+	margin-right: 12px;
+	padding: 4px 20px;
+	border: 1.5px solid #979797;
+	border-radius: 20px;
+	color: #979797;
 }
 
 .filterPanel .results {
@@ -168,7 +184,11 @@
 }
 
 .seeMore {
-
+	font-family: SF-Pro-Medium;
+	margin-top: 40px;
+	padding-bottom: 40px;
+	text-align: center;
+	color: #646464;
 }
 
 
