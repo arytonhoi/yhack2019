@@ -2,8 +2,6 @@
 	/* TODO */
 	flex: 1;
 	padding: 50px;
-	display: flex;
-	flex-direction: column;
 	background-color: #F2F3F6;
 }
 

@@ -29,7 +29,9 @@ function renderGeneralInsights() {
   return (
     <React.Fragment>
       {renderTitle("General Insights")}
-      {renderTitleText("View the most current trending words our customers are saying across social media about JetBlue’s cusomter and in-flight service.")}
+      {renderTitleText(
+        "View the most current trending words our customers are saying across social media about JetBlue’s cusomter and in-flight service."
+      )}
       <ToggleablePanel on={options.on} off={options.off} />
     </React.Fragment>
   );
@@ -60,8 +62,10 @@ function renderEmployeeSpecific() {
   return (
     <React.Fragment>
       {renderTitle("Employee-Specific Comments")}
-      {renderTitleText("View employee-specific feedback and shoutouts directly from our customers.")}
-      <div style={{ display: "flex", flexDirection: "row", height: "300px"}}>
+      {renderTitleText(
+        "View employee-specific feedback and shoutouts directly from our customers."
+      )}
+      <div style={{ display: "flex", flexDirection: "row", height: "240px" }}>
         <TextPanel
           style={{ flex: 1 }}
           boldedText='25%'
@@ -73,6 +77,18 @@ function renderEmployeeSpecific() {
           bodyText='different shoutouts have been given to our JetBlue employees in 2019.'
         />
       </div>
+    </React.Fragment>
+  );
+}
+
+function renderFacebookInsights() {
+  return (
+    <React.Fragment>
+      <TextPanel
+        style={{ height: "240px" }}
+        boldedText='50%'
+        bodyText='of our 2019 social media comments is comprised of Facebook comments.'
+      />
     </React.Fragment>
   );
 }
@@ -90,21 +106,15 @@ function renderCorrectPanel(selectedPanel) {
     return renderGeneralInsights();
   } else if (selectedPanel === "employee-spec") {
     return renderEmployeeSpecific();
-  } else {
+  } else if (selectedPanel === "facebook") {
+    return renderFacebookInsights(); 
+  }else {
     return <div>Some other panel</div>;
   }
 }
 
 function MainPanel(props) {
-  return (
-    <div className='mainPanel'>
-      {renderCorrectPanel(props.selected)}
-      <TextPanel
-        boldedText='50%'
-        bodyText='of our 2019 social media comments is comprised of Facebook comments.'
-      />
-    </div>
-  );
+  return <div className='mainPanel'>{renderCorrectPanel(props.selected)}</div>;
 }
 
 export default MainPanel;
