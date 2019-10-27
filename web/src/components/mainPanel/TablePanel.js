@@ -5,8 +5,13 @@ import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import Button from "@material-ui/core/Button";
+
 import computedResults from "../../../public/computed.json";
 import exportEmployees from "../../../public/employees.csv";
+
+import fbIcon from "../../../public/images/logo_facebook.png";
+import tripIcon from "../../../public/images/logo_tripadvisor.png";
+import twitterIcon from "../../../public/images/logo_twitter.png";
 
 import Card from "./Card";
 
@@ -30,7 +35,11 @@ class TablePanel extends Component {
 
   renderIcon(source) {
     if (source === "facebook") { 
-
+      return <img src={fbIcon} height={"30px"}/>
+    } else if (source === "twitter") {
+      return <img src={twitterIcon} height={"30px"}/>
+    } else if (source === "tripadvisor") {
+      return <img src={tripIcon} height={"30px"}/>      
     }
     return <div>ICON</div>
   }
