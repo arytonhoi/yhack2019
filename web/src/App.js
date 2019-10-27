@@ -22,7 +22,7 @@ class App extends Component {
           selected={this.state.selectedPanel}
           onPanelSelect={this.onPanelSelect.bind(this)}
         />
-        <MainPanel />
+        <MainPanel selected={this.state.selectedPanel} />
       </div>
     );
   }
