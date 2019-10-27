@@ -130,7 +130,7 @@ function renderFacebookInsights() {
       <FilterPanel
         title={"Filter Facebook Stuff"}
         titleText={"Search Something here blah blah blah"}
-        searchableTerms={["hello", "blah", "plane"]}
+        tags={["hello", "blah", "plane"]}
       />
     </React.Fragment>
   );
