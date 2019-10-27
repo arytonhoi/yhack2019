@@ -1,14 +1,15 @@
 .mainPanel {
 	/* TODO */
 	flex: 1;
-	padding: 50px;
+	padding: 85px;
 	background-color: #F2F3F6;
+	overflow: scroll;
 }
 
 .mainPanel .bigTitle {
 	font-family: SF-Pro-Bold;
 	font-size: 45px;
-	margin-top: 40px;
+	margin-top: 10px;
 	margin-left: 30px;
 	color: #01205B;
 }
@@ -98,3 +99,28 @@
 
 /*=================================*/
 
+<<<<<<< HEAD
+=======
+.imagePanel {
+	display: flex;
+	flex-direction: column;
+}
+
+.titleText {
+	font-family: SF-Pro-Bold;
+	font-size: 24px;
+	margin-top: 40px;
+	margin-left: 30px;
+	color: #01205B;
+}
+
+.image {
+	width: 100%;
+}
+
+
+
+
+
+
+>>>>>>> 38a64d68ee75d223d47a6702207fcd646a6d8dfb

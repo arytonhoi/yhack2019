@@ -1,8 +1,15 @@
 import React from "react";
 import "./MainPanel.css";
 
+import positiveGraphImage from "../../../public/images/positive-graph.png";
+import positiveCloudImage from "../../../public/images/positive-cloud.png";
+import negativeGraphImage from "../../../public/images/negative-graph.png";
+import negativeCloudImage from "../../../public/images/negative-cloud.png";
+import facebookCloudImage from "../../../public/images/positive-cloud.png";
+
 import ToggleablePanel from "./ToggleablePanel";
 import TextPanel from "./TextPanel";
+import ImagePanel from "./ImagePanel";
 
 function renderGeneralInsights() {
   const options = {
@@ -10,8 +17,10 @@ function renderGeneralInsights() {
       name: "Positive Reviews",
       render: () => (
         <React.Fragment>
-          <div>Image One Goes here </div>
-          <div>Image Two Goes Here</div>
+          <img style={{ width: "100%", marginBottom: "20px"}} src={positiveGraphImage}></img>
+          <div style={{ width: "75%",margin: "auto"}}> 
+          <img style={{ width: "100%"}} src={positiveCloudImage}></img>
+          </div>
         </React.Fragment>
       )
     },
@@ -19,8 +28,10 @@ function renderGeneralInsights() {
       name: "Negative Reviews",
       render: () => (
         <React.Fragment>
-          <div>Image One NEG Goes here </div>
-          <div>Image Two NEG Goes Here</div>
+          <img style={{ width: "100%", marginBottom: "20px"}} src={negativeGraphImage}></img>
+          <div style={{ width: "75%",margin: "auto"}}> 
+          <img style={{ width: "100%"}} src={negativeCloudImage}></img>
+          </div>
         </React.Fragment>
       )
     }
@@ -30,7 +41,7 @@ function renderGeneralInsights() {
     <React.Fragment>
       {renderTitle("General Insights")}
       {renderTitleText(
-        "View the most current trending words our customers are saying across social media about JetBlue’s cusomter and in-flight service."
+        "View the most current trending words our customers are saying across social media about JetBlue’s customer and in-flight service."
       )}
       <ToggleablePanel on={options.on} off={options.off} />
     </React.Fragment>
@@ -69,12 +80,12 @@ function renderEmployeeSpecific() {
         <TextPanel
           style={{ flex: 1 }}
           boldedText='25%'
-          bodyText='of our 2019 social media comments are specific to our employees.'
+          bodyText='of our 2019 social media comments are about our employees.'
         />
         <TextPanel
           style={{ flex: 1 }}
           boldedText='40%'
-          bodyText='different shoutouts have been given to our JetBlue employees in 2019.'
+          bodyText='shoutouts have been given to our JetBlue employees in 2019.'
         />
       </div>
     </React.Fragment>
@@ -88,6 +99,11 @@ function renderFacebookInsights() {
         style={{ height: "240px" }}
         boldedText='50%'
         bodyText='of our 2019 social media comments is comprised of Facebook comments.'
+      />
+      <ImagePanel
+        style={{ height: "240px" }}
+        titleText='Trending Words on Facebook Comments'
+        url={facebookCloudImage}
       />
     </React.Fragment>
   );
