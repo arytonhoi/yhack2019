@@ -2,6 +2,7 @@ import React from "react";
 import "./MainPanel.css";
 
 import ToggleablePanel from "./ToggleablePanel";
+import TextPanel from "./TextPanel";
 
 function renderGeneralInsights() {
   const options = {
@@ -36,12 +37,12 @@ function renderGeneralInsights() {
 
 function renderTitle(title) {
   // TODO
-  return <div className='title'>{title}</div>;
+  return <div className='bigTitle'>{title}</div>;
 }
 
 function renderTitleText(titleText) {
   // TODO
-  return <div className='titleText'>{titleText}</div>;
+  return <div className='bigTitleText'>{titleText}</div>;
 }
 
 function renderCorrectPanel(selectedPanel) {
@@ -54,10 +55,14 @@ function renderCorrectPanel(selectedPanel) {
 
 function MainPanel(props) {
   return (
-    <div className="mainPanel">
+    <div className='mainPanel'>
       {renderCorrectPanel(props.selected)}
+      <TextPanel
+        boldedText='50%'
+        bodyText='Here is some arbitrrary long description for somthing'
+      />
     </div>
-  )
+  );
 }
 
 export default MainPanel;
