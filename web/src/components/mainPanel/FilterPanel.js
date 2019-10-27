@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Card from "./Card";
-import { TextField, InputAdornment } from "material-ui";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
 
 class FilterPanel extends Component {
   constructor(props) {
@@ -36,6 +37,8 @@ class FilterPanel extends Component {
         </div>
         <div className='search'>
           <TextField
+            variant="outlined"
+            id="searchInput"
             value={this.state.filter}
             onChange={event =>
               this.onSearchChanged.call(this, event.target.value)

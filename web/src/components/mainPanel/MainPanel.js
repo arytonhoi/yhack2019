@@ -23,9 +23,11 @@ function renderGeneralInsights() {
       name: "Positive Reviews",
       render: () => (
         <React.Fragment>
-          <img style={{ width: "100%", marginBottom: "20px"}} src={positiveGraphImage}></img>
-          <div style={{ width: "75%",margin: "auto"}}> 
-          <img style={{ width: "100%"}} src={positiveCloudImage}></img>
+          <img
+            style={{ width: "100%", marginBottom: "20px" }}
+            src={positiveGraphImage}></img>
+          <div style={{ width: "75%", margin: "auto" }}>
+            <img style={{ width: "100%" }} src={positiveCloudImage}></img>
           </div>
         </React.Fragment>
       )
@@ -34,9 +36,11 @@ function renderGeneralInsights() {
       name: "Negative Reviews",
       render: () => (
         <React.Fragment>
-          <img style={{ width: "100%", marginBottom: "20px"}} src={negativeGraphImage}></img>
-          <div style={{ width: "75%",margin: "auto"}}> 
-          <img style={{ width: "100%"}} src={negativeCloudImage}></img>
+          <img
+            style={{ width: "100%", marginBottom: "20px" }}
+            src={negativeGraphImage}></img>
+          <div style={{ width: "75%", margin: "auto" }}>
+            <img style={{ width: "100%" }} src={negativeCloudImage}></img>
           </div>
         </React.Fragment>
       )
@@ -84,12 +88,20 @@ function renderEmployeeSpecific() {
       )}
       <div style={{ display: "flex", flexDirection: "row", height: "240px" }}>
         <TextPanel
-          style={{ flex: 1, backgroundImage: `url(${shortBarStatsBGImage})`, backgroundSize: "100%"}}
+          style={{
+            flex: 1,
+            backgroundImage: `url(${shortBarStatsBGImage})`,
+            backgroundSize: "100%"
+          }}
           boldedText='25%'
           bodyText='of our 2019 social media comments are about our employees.'
         />
         <TextPanel
-          style={{ flex: 1, backgroundImage: `url(${shortLineStatsBGImage})`, backgroundSize: "100%"}}
+          style={{
+            flex: 1,
+            backgroundImage: `url(${shortLineStatsBGImage})`,
+            backgroundSize: "100%"
+          }}
           boldedText='40%'
           bodyText='shoutouts have been given to our JetBlue employees in 2019.'
         />
@@ -102,18 +114,23 @@ function renderFacebookInsights() {
   return (
     <React.Fragment>
       <TextPanel
-        style={{ flex: 1, backgroundImage: `url(${longStatsBGImage})`, backgroundSize: "110%", height: "240px"}}
+        style={{
+          flex: 1,
+          backgroundImage: `url(${longStatsBGImage})`,
+          backgroundSize: "110%",
+          height: "240px"
+        }}
         boldedText='50%'
         bodyText='of our 2019 social media comments is comprised of Facebook comments.'
       />
       <ImagePanel
-        style={{ height: "240px" }}
         titleText='Trending Words on Facebook Comments'
         url={facebookCloudImage}
       />
       <FilterPanel
         title={"Filter Facebook Stuff"}
         titleText={"Search Something here blah blah blah"}
+        searchableTerms={["hello", "blah", "plane"]}
       />
     </React.Fragment>
   );
@@ -133,8 +150,8 @@ function renderCorrectPanel(selectedPanel) {
   } else if (selectedPanel === "employee-spec") {
     return renderEmployeeSpecific();
   } else if (selectedPanel === "facebook") {
-    return renderFacebookInsights(); 
-  }else {
+    return renderFacebookInsights();
+  } else {
     return <div>Some other panel</div>;
   }
 }
