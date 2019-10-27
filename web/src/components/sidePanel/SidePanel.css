@@ -1,0 +1,64 @@
+
+
+.sidePanel {
+  /* TODO */
+  width: 240px;
+  text-align: right;
+  background-image: url("../../../public/images/nav-bar.png");
+  background-size: 260px 1000px;
+  color: white;
+}
+
+.staticSidePanel {
+  /* TODO */
+  position: relative;
+  top: 10%;
+}
+
+.staticSidePanel .title {
+  font-family: SF-Pro-Black;
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 60px;
+}
+
+.selectablePanel {
+  margin-top: 12%;
+}
+
+.selectablePanel .header {
+  font-family: SF-Pro-Bold;
+  margin-top: 18%;
+  margin-bottom: 20px;
+  margin-right: 30px;
+
+}
+
+.selectablePanel .menu {
+  /* TODO */
+  background-color: rgba(21, 80, 192, 0.68);
+  margin-left: 28%;
+  padding-top: 14px;
+  padding-bottom: 24px;
+  border-radius: 18px 0px 0px 18px;
+}
+
+.selectablePanel .menu .menuItem {
+  font-family: SF-Pro-Regular;
+  margin-top: 14px;
+  padding: 8px 0px;
+  padding-right: 30px;
+  font-size: 15px;
+}
+
+.selectablePanel .menu .menuItem.selected {
+  /* TODO */
+  font-family: SF-Pro-Medium;
+  background-color: rgba(255, 255, 255, 0.17);
+  padding-right: 25px;
+  border-right: 5px solid #FF8900;
+}
+
+
+
+

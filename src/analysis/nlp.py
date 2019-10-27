@@ -1,4 +1,6 @@
 # Imports the Google Cloud client library
+from google.cloud import language_v1
+from google.cloud.language_v1 import enums
 from google.cloud import language
 from google.cloud.language import enums
 from google.cloud.language import types
@@ -45,14 +47,24 @@ class NLP:
     api_response = self.client.analyze_entity_sentiment(document, encoding_type=encoding_type)
 
     for entity in api_response.entities:
-        entity_salience = entity.salience
-        if entity_salience > salience_threshold:
-            entities.append({'value': entity.name, 
-                            'type': enums.Entity.Type(entity.type).name, 
-                            'salience': entity.salience, 
-                            'sentiment': {'score': entity.sentiment.score, 
-                                          'magnitude': entity.sentiment.magnitude}
-                            })
+      is_proper = False
+      for mention in entity.mentions:
+        if (enums.EntityMention.Type(mention.type).name == 'PROPER'):
+          # print(mention.text.content)
+          is_proper = True
+      
+      entity_salience = entity.salience
+      if entity_salience > salience_threshold:
+        if is_proper and (enums.Entity.Type(entity.type).name == 'PERSON'):
+          entity_type = 'NAME'
+        else:
+          entity_type = enums.Entity.Type(entity.type).name
+        entities.append({'value': entity.name, 
+                        'type': entity_type, 
+                        'salience': entity.salience, 
+                        'sentiment': {'score': entity.sentiment.score, 
+                                      'magnitude': entity.sentiment.magnitude}
+                        })
     return entities 
 
 
@@ -74,7 +86,7 @@ class NLP:
   #     }]
   #   }
   # }
-  def analyze(self,content,salience_threshold,language='en',
+  def analyze(self,content_object,salience_threshold,language='en',
             type_=enums.Document.Type.PLAIN_TEXT, encoding_type=enums.EncodingType.UTF8):
-    return {'document_sentiment': self.get_whole_sentiment(content['content']),
-            'entities': self.get_entities(content['content'], salience_threshold)}
+    return {'document_sentiment': self.get_whole_sentiment(content_object['content']),
+            'entities': self.get_entities(content_object['content'], salience_threshold)}

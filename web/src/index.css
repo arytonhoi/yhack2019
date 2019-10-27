@@ -1,0 +1,55 @@
+@font-face {
+	font-family: SF-Pro-Ultralight;
+	src: url("../public/fonts/SF-Pro-Text-Ultralight.otf");
+}
+
+@font-face {
+	font-family: SF-Pro-UltralightItalic;
+	src: url("../public/fonts/SF-Pro-Text-UltralightItalic.otf");
+}
+
+@font-face {
+	font-family: SF-Pro-Thin;
+	src: url("../public/fonts/SF-Pro-Text-Thin.otf");
+}
+
+@font-face {
+	font-family: SF-Pro-Medium;
+	src: url("../public/fonts/SF-Pro-Text-Medium.otf");
+}
+
+@font-face {
+	font-family: SF-Pro-Light;
+	src: url("../public/fonts/SF-Pro-Text-Light.otf");
+}
+
+@font-face {
+	font-family: SF-Pro-Regular;
+	src: url("../public/fonts/SF-Pro-Text-Regular.otf");
+}
+
+@font-face {
+	font-family: SF-Pro-Semibold;
+	src: url("../public/fonts/SF-Pro-Text-Semibold.otf");
+}
+
+@font-face {
+	font-family: SF-Pro-Bold;
+	src: url("../public/fonts/SF-Pro-Text-Bold.otf");
+}
+
+@font-face {
+	font-family: SF-Pro-Heavy;
+	src: url("../public/fonts/SF-Pro-Text-Heavy.otf");
+}
+
+@font-face {
+	font-family: SF-Pro-Black;
+	src: url("../public/fonts/SF-Pro-Display-Bold.otf");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
