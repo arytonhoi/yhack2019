@@ -25,7 +25,7 @@ class SidePanel extends Component {
   render() {
     const semanticsTitle = "Overall Semantics";
     const semanticsSelections = [
-      { name: "general-reviews", label: "General Reviews" },
+      { name: "general-insights", label: "General Insights" },
       { name: "employee-spec", label: "Employee-Specific" }
     ];
 

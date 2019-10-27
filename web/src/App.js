@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedPanel: null
+      selectedPanel: "general-insights"
     };
   }
 
