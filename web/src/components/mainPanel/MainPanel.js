@@ -10,6 +10,7 @@ import facebookCloudImage from "../../../public/images/positive-cloud.png";
 import ToggleablePanel from "./ToggleablePanel";
 import TextPanel from "./TextPanel";
 import ImagePanel from "./ImagePanel";
+import FilterPanel from "./FilterPanel";
 
 function renderGeneralInsights() {
   const options = {
@@ -104,6 +105,10 @@ function renderFacebookInsights() {
         style={{ height: "240px" }}
         titleText='Trending Words on Facebook Comments'
         url={facebookCloudImage}
+      />
+      <FilterPanel
+        title={"Filter Facebook Stuff"}
+        titleText={"Search Something here blah blah blah"}
       />
     </React.Fragment>
   );

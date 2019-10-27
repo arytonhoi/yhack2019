@@ -99,14 +99,12 @@
 
 /*=================================*/
 
-<<<<<<< HEAD
-=======
 .imagePanel {
 	display: flex;
 	flex-direction: column;
 }
 
-.titleText {
+.imagePanel .titleText {
 	font-family: SF-Pro-Bold;
 	font-size: 24px;
 	margin-top: 40px;
@@ -114,13 +112,65 @@
 	color: #01205B;
 }
 
-.image {
+.imagePanel .image {
 	width: 100%;
+}
+
+/*=================================*/
+
+.filterPanel {
+
+}
+
+.filterPanel .header {
+
+}
+
+.filterPanel .header .title {
+
+}
+
+.filterPanel .header .titleText {
+
+}
+
+.filterPanel .search {
+
+}
+
+.filterPanel .search .searchInput {
+
+}
+
+.filterPanel .terms {
+
+}
+
+.filterPanel .terms .searchTerm {
+
+}
+
+.filterPanel .results {
+
+}
+
+.filterPanel .results .singleResult {
+
+}
+
+.filterPanel .singleResult .resultHeader {
+
+}
+
+.filterPanel .singleResult .resultContent {
+
+}
+
+.seeMore {
+  
 }
 
 
 
 
 
-
->>>>>>> 38a64d68ee75d223d47a6702207fcd646a6d8dfb
