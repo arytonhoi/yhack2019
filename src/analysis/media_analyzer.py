@@ -127,8 +127,8 @@ class MediaAnalyzer:
       refined_results = {'results':refined_nlp_results}
 
       # write raw results to json
-      with open('raw_' + output_json, 'w') as fp:
-        json.dump(raw_results, fp)
+      # with open('raw_' + output_json, 'w') as fp:
+      #   json.dump(raw_results, fp)
 
       # write refined results to json
       with open('refined_' + output_json, 'w') as fp:
@@ -155,6 +155,8 @@ class MediaAnalyzer:
             row_dict['comment'] = media_post['content'].replace('\n','')
             print(row_dict)
             writer.writerow(row_dict)
+
+    def 
 
 
 if __name__ == '__main__':
