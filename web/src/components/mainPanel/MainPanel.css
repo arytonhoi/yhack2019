@@ -17,11 +17,12 @@
 
 .mainPanel .bigTitleText {
 	font-family: SF-Pro-Regular;
-	font-size: 17px;
+	font-size: 15px;
 	margin-top: 14px;
 	margin-bottom: 32px;
 	margin-left: 30px;
 	color: #01205B;
+	line-height: 1.4;
 }
 
 /*=================================*/
@@ -89,8 +90,10 @@
 }
 
 .textPanel .body {
-	margin-top: -96px;
+	font-family: SF-Pro-Regular;
+	margin-top: -70px;
 	line-height: 1.4;
 	width: 50%;
 	color: #01205B;
+	font-size: 15px;
 }
