@@ -28,13 +28,13 @@ def getPositiveKeywords(json_file, data_src=None):
         keyword_list = []
         if data_src is not None:
             for item in data["results"]:
-                if item['sentiment_score'] >= 0.25 and item['source'] == data_src:
+                if item['sentiment_score'] > 0 and item['source'] == data_src:
                     keyword_list.extend(item['keywords'])
             keyword_list = filter(lambda i: i.lower()  not in useless_words, keyword_list)
             return keyword_list
         else:
             for item in data["results"]:
-                if item['sentiment_score'] >= 0.25:
+                if item['sentiment_score'] > 0:
                     keyword_list.extend(item['keywords'])
             keyword_list = filter(lambda i: i.lower()  not in useless_words, keyword_list)
             return keyword_list
@@ -45,13 +45,13 @@ def getNegativeKeywords(json_file, data_src=None):
         keyword_list = []
         if data_src is not None:
             for item in data["results"]:
-                if item['sentiment_score'] <= -0.25 and item['source'] == data_src:
+                if item['sentiment_score'] < 0 and item['source'] == data_src:
                     keyword_list.extend(item['keywords'])
             keyword_list = filter(lambda i: i.lower()  not in useless_words, keyword_list)
             return keyword_list
         else:
             for item in data["results"]:
-                if item['sentiment_score'] <= -0.25:
+                if item['sentiment_score'] < 0:
                     keyword_list.extend(item['keywords'])
             keyword_list = filter(lambda i: i.lower()  not in useless_words, keyword_list)
             return keyword_list
@@ -62,13 +62,13 @@ def getAllKeywords(json_file, data_src=None):
         keyword_list = []
         if data_src is not None:
             for item in data["results"]:
-                if (item['sentiment_score'] <= -0.25 or item['sentiment_score'] >= 0.25) and item['source'] == data_src:
+                if (item['sentiment_score'] < 0 or item['sentiment_score'] > 0) and item['source'] == data_src:
                     keyword_list.extend(item['keywords'])
             keyword_list = filter(lambda i: i.lower()  not in useless_words, keyword_list)
             return keyword_list
         else:
             for item in data["results"]:
-                if (item['sentiment_score'] <= -0.25 or item['sentiment_score'] >= 0.25):
+                if (item['sentiment_score'] < 0 or item['sentiment_score'] > 0):
                     keyword_list.extend(item['keywords'])
             keyword_list = filter(lambda i: i.lower()  not in useless_words, keyword_list)
             return keyword_list
@@ -83,7 +83,7 @@ def red_color_func(word, font_size, position, orientation, random_state=None, **
 
 # create shades of red for word cloud to represent negative attributes
 def purple_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
-    return "hsl(280, 100%%, %d%%)" % random.randint(30, 70)
+    return "hsl(205, 100%%, %d%%)" % random.randint(30, 50)
 
 # creates a cloud or rectangle of key words
 class WordCloudGenerator:
@@ -216,32 +216,12 @@ class WordGraphGenerator:
 # run
 # create instance of WordCloud
 image1 = WordCloudGenerator()
-image1.create_keywords_file('refined_big_output.json', 'cloud.txt', "negative")
-image1.generate_image("cloud.txt", "negCloud.png", "negative", 'cloud.png')
-
+image1.create_keywords_file('refined_big_output.json', 'cloud.txt', "", "tripadvisor")
+image1.generate_image("cloud.txt", "tripadvisorCloud.png", "", 'cloud.png')
 image2 = WordCloudGenerator()
-image2.create_keywords_file('refined_big_output.json', 'cloud.txt', "positive")
-image2.generate_image("cloud.txt", "posCloud.png", "positive", 'cloud.png')
+image2.create_keywords_file('refined_big_output.json', 'cloud.txt', "", "twitter")
+image2.generate_image("cloud.txt", "twitterCloud.png", "", 'cloud.png')
 
-imageFB = WordCloudGenerator()
-imageFB.create_keywords_file('refined_big_output.json', 'cloud.txt', "negative", "facebook")
-imageFB.generate_image("cloud.txt", 'fbCloud.png', "negative", "cloud.png")
-
-imageAllFB = WordCloudGenerator()
-imageAllFB.create_keywords_file('refined_big_output.json', 'cloud.txt', "", "facebook")
-imageAllFB.generate_image("cloud.txt", "fbAllCloud.png", "", "cloud.png")
-
-imageAllTw = WordCloudGenerator()
-imageAllTw.create_keywords_file('refined_big_output.json', 'cloud.txt', "", "twitter")
-imageAllTw.generate_image("cloud.txt", "twAllCloud.png", "", "cloud.png")
-
-imageNegTw = WordCloudGenerator()
-imageNegTw.create_keywords_file('refined_big_output.json', 'cloud.txt', "negative", "twitter")
-imageNegTw.generate_image("cloud.txt", "twNegCloud.png", "negative", "cloud.png")
-
-imageTA = WordCloudGenerator()
-imageTA.create_keywords_file('refined_big_output.json', 'cloud.txt', "", "twitter")
-imageTA.generate_image("cloud.txt", "taCloud.png", "")
 
 # create instance of WordGraph
 graph1 = WordGraphGenerator()
