@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Card from "./Card";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import computedResults from "../../../public/computed.json";
 
 class FilterPanel extends Component {
   constructor(props) {
@@ -10,12 +11,50 @@ class FilterPanel extends Component {
     this.state = {
       filter: "",
       viewingSize: 3,
-      results: []
+      results: [],
+      selectedTag: ""
     };
+  }
+
+  filter(results, filter) {
+    var matches = [];
+
+    for (var i = 0; i < results.length; i++) {
+      let result = results[i];
+      if (result.keywords.includes(filter)) {
+        var match = {};
+
+        var sentiment;
+        if (result.sentiment_score < 0) {
+          sentiment = "negative";
+        } else {
+          sentiment = "positive";
+        }
+
+        match["username"] = result.username;
+        match["source"] = result.source;
+        match["sentiment"] = sentiment;
+        match["location"] = result.location[0];
+        match["content"] = result.content;
+
+        matches.push(result);
+      }
+    }
+    return matches;
   }
 
   onSearchChanged(value) {
     this.setState({ filter: value });
+  }
+
+  onEnterKeyPressed() {
+    this.setState({ selectedTag: "" });
+    this.applyFilter(this.state.filter);
+  }
+
+  onTagClicked(selectedTag) {
+    this.setState({ selectedTag: selectedTag });
+    this.applyFilter(selectedTag);
   }
 
   increaseResultSize() {
@@ -23,9 +62,10 @@ class FilterPanel extends Component {
     this.setState({ viewingSize: newSize });
   }
 
-  applyFilter() {
+  applyFilter(filter) {
     // do something to results
-    this.setState({ results: [] });
+    console.log(this.filter(computedResults.results, filter));
+    this.setState({ results: this.filter(computedResults.results, filter) });
   }
 
   render() {
@@ -37,13 +77,17 @@ class FilterPanel extends Component {
         </div>
         <div className='search'>
           <TextField
-            variant="outlined"
-            id="searchInput"
+            variant='outlined'
+            id='searchInput'
             value={this.state.filter}
             onChange={event =>
               this.onSearchChanged.call(this, event.target.value)
             }
-            onBlur={this.applyFilter.bind(this)}
+            onKeyPress={event => {
+              if (event.key === "Enter") {
+                this.onEnterKeyPressed.call(this);
+              }
+            }}
             className='searchInput'
             InputProps={{
               startAdornment: (
@@ -55,13 +99,15 @@ class FilterPanel extends Component {
           />
         </div>
         <div className='terms'>
-          {this.props.searchableTerms.map(searchableTerm => {
+          {this.props.tags.map(tag => {
             return (
               <div
-                key={searchableTerm}
-                onClick={() => this.onSearchChanged.call(this, searchableTerm)}
-                className='searchTerm'>
-                {searchableTerm}
+                key={tag}
+                onClick={() => this.onTagClicked(tag)}
+                className={`searchTerm ${
+                  this.state.selectedTag === tag ? "selected" : ""
+                }`}>
+                {tag}
               </div>
             );
           })}
@@ -70,7 +116,7 @@ class FilterPanel extends Component {
           {this.state.results.slice(0, this.state.viewingSize).map(result => {
             return (
               <div className='singleResult'>
-                <div className='resultHeader'>{result.header}</div>
+                <div className='resultHeader'>{result.username}</div>
                 <div className='resultContent'>{result.content}</div>
               </div>
             );
