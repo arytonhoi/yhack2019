@@ -5,7 +5,12 @@ import positiveGraphImage from "../../../public/images/positive-graph.png";
 import positiveCloudImage from "../../../public/images/positive-cloud.png";
 import negativeGraphImage from "../../../public/images/negative-graph.png";
 import negativeCloudImage from "../../../public/images/negative-cloud.png";
-import facebookCloudImage from "../../../public/images/positive-cloud.png";
+
+import shortLineStatsBGImage from "../../../public/images/short-line-stats.png";
+import shortBarStatsBGImage from "../../../public/images/short-bar-stats.png";
+import longStatsBGImage from "../../../public/images/long-stats.png";
+
+import facebookCloudImage from "../../../public/images/facebook-cloud.png";
 
 import ToggleablePanel from "./ToggleablePanel";
 import TextPanel from "./TextPanel";
@@ -78,12 +83,12 @@ function renderEmployeeSpecific() {
       )}
       <div style={{ display: "flex", flexDirection: "row", height: "240px" }}>
         <TextPanel
-          style={{ flex: 1 }}
+          style={{ flex: 1, backgroundImage: `url(${shortBarStatsBGImage})`, backgroundSize: "100%"}}
           boldedText='25%'
           bodyText='of our 2019 social media comments are about our employees.'
         />
         <TextPanel
-          style={{ flex: 1 }}
+          style={{ flex: 1, backgroundImage: `url(${shortLineStatsBGImage})`, backgroundSize: "100%"}}
           boldedText='40%'
           bodyText='shoutouts have been given to our JetBlue employees in 2019.'
         />
@@ -96,7 +101,7 @@ function renderFacebookInsights() {
   return (
     <React.Fragment>
       <TextPanel
-        style={{ height: "240px" }}
+        style={{ flex: 1, backgroundImage: `url(${longStatsBGImage})`, backgroundSize: "110%", height: "240px"}}
         boldedText='50%'
         bodyText='of our 2019 social media comments is comprised of Facebook comments.'
       />
