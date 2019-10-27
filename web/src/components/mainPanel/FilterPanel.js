@@ -12,9 +12,16 @@ class FilterPanel extends Component {
     this.state = {
       filter: "",
       viewingSize: 3,
-      results: [],
+      results: this.sourceFilter(computedResults.results),
       selectedTag: ""
     };
+  }
+
+  sourceFilter(results) {
+    if (this.props.sourceFilter) {
+      results = results.filter(match => match.source === this.props.sourceFilter);
+    }
+    return results;
   }
 
   filter(results, filter) {
@@ -42,9 +49,7 @@ class FilterPanel extends Component {
       }
     }
 
-    if (this.props.sourceFilter) {
-      matches = matches.filter(match => match.source === this.props.sourceFilter);
-    }
+    matches = this.sourceFilter(matches);
 
     return matches;
   }
@@ -59,7 +64,7 @@ class FilterPanel extends Component {
   }
 
   onTagClicked(selectedTag) {
-    this.setState({ selectedTag: selectedTag });
+    this.setState({ filter: "", selectedTag: selectedTag });
     this.applyFilter(selectedTag);
   }
 
@@ -70,7 +75,6 @@ class FilterPanel extends Component {
 
   applyFilter(filter) {
     // do something to results
-    console.log(this.filter(computedResults.results, filter));
     this.setState({ results: this.filter(computedResults.results, filter) });
   }
 
@@ -135,7 +139,7 @@ class FilterPanel extends Component {
             </span>
           </div>
         ) : (
-          <div />
+          <div style={{ padding: "20px"}}/>
         )}
       </Card>
     );

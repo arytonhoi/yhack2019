@@ -6,6 +6,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import Button from "@material-ui/core/Button";
 import computedResults from "../../../public/computed.json";
+import exportEmployees from "../../../public/employees.csv";
 
 import Card from "./Card";
 
@@ -17,8 +18,6 @@ class TablePanel extends Component {
     this.state = {
       viewingSize: Math.min(this.employees.length, 10)
     };
-
-
   }
 
   filter(results) {
@@ -44,10 +43,19 @@ class TablePanel extends Component {
     return <div style={{ overflow: "hidden", height: "1.1em", lineHeight: "1em" }}>{content}</div>
   }
 
+  increaseResultSize() {
+    let newSize = Math.min(this.state.viewingSize + 3, this.employees.length);
+    this.setState({ viewingSize: newSize });
+  }
+
+  onExportButtonClick() {
+    window.open(exportEmployees);
+  }
+
   render() {
     return (
       <Card className='tablePanel'>
-        <Button variant="contained" className='exportButton'>Download Full CSV</Button>
+        <Button onClick={this.onExportButtonClick} variant="contained" className='exportButton'>Download Full CSV</Button>
         <div className='tableTitle'>{this.props.title}</div>
         <div className='tableSubTitle'>{this.props.subtitle}</div>
         <Table className='table'>
@@ -76,6 +84,15 @@ class TablePanel extends Component {
             })}
           </TableBody>
         </Table>
+        {this.employees.length >= this.state.viewingSize ? (
+          <div className='seeMore'>
+            <span onClick={() => this.increaseResultSize.call(this)}>
+              See More
+            </span>
+          </div>
+        ) : (
+          <div style={{ padding: "20px"}}/>
+        )}
       </Card>
     );
   }
