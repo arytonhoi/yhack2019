@@ -35,19 +35,61 @@ function renderGeneralInsights() {
   );
 }
 
+function renderEmployeeSpecific() {
+  const options = {
+    on: {
+      name: "Positive Feedback",
+      render: () => (
+        <React.Fragment>
+          <div>Image One Goes here </div>
+          <div>Image Two Goes Here</div>
+        </React.Fragment>
+      )
+    },
+    off: {
+      name: "Negative Feedback",
+      render: () => (
+        <React.Fragment>
+          <div>Image One NEG Goes here </div>
+          <div>Image Two NEG Goes Here</div>
+        </React.Fragment>
+      )
+    }
+  };
+
+  return (
+    <React.Fragment>
+      {renderTitle("Employee-Specific Comments")}
+      {renderTitleText("View Some blah blah blah")}
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <TextPanel
+          style={{ flex: 1 }}
+          boldedText='25%'
+          bodyText='A lot of gibberish goes here'
+        />
+        <TextPanel
+          style={{ flex: 1 }}
+          boldedText='40%'
+          bodyText='A lot of gibberish goes here'
+        />
+      </div>
+    </React.Fragment>
+  );
+}
+
 function renderTitle(title) {
-  // TODO
   return <div className='bigTitle'>{title}</div>;
 }
 
 function renderTitleText(titleText) {
-  // TODO
   return <div className='bigTitleText'>{titleText}</div>;
 }
 
 function renderCorrectPanel(selectedPanel) {
-  if (selectedPanel == "general-insights") {
+  if (selectedPanel === "general-insights") {
     return renderGeneralInsights();
+  } else if (selectedPanel === "employee-spec") {
+    return renderEmployeeSpecific();
   } else {
     return <div>Some other panel</div>;
   }
