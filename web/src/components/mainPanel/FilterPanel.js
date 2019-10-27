@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Card from "./Card";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import Search from "@material-ui/icons/Search";
 import computedResults from "../../../public/computed.json";
 
 class FilterPanel extends Component {
@@ -11,20 +12,27 @@ class FilterPanel extends Component {
     this.state = {
       filter: "",
       viewingSize: 3,
-      results: [],
+      results: this.sourceFilter(computedResults.results),
       selectedTag: ""
     };
   }
 
-  filter(results, filter) {
-    var matches = [];
+  sourceFilter(results) {
+    if (this.props.sourceFilter) {
+      results = results.filter(match => match.source === this.props.sourceFilter);
+    }
+    return results;
+  }
 
-    for (var i = 0; i < results.length; i++) {
+  filter(results, filter) {
+    let matches = [];
+
+    for (let i = 0; i < results.length; i++) {
       let result = results[i];
       if (result.keywords.includes(filter)) {
-        var match = {};
+        let match = {};
 
-        var sentiment;
+        let sentiment;
         if (result.sentiment_score < 0) {
           sentiment = "negative";
         } else {
@@ -37,9 +45,12 @@ class FilterPanel extends Component {
         match["location"] = result.location[0];
         match["content"] = result.content;
 
-        matches.push(result);
+        matches.push(match);
       }
     }
+
+    matches = this.sourceFilter(matches);
+
     return matches;
   }
 
@@ -53,18 +64,17 @@ class FilterPanel extends Component {
   }
 
   onTagClicked(selectedTag) {
-    this.setState({ selectedTag: selectedTag });
+    this.setState({ filter: "", selectedTag: selectedTag });
     this.applyFilter(selectedTag);
   }
 
   increaseResultSize() {
-    let newSize = Math.min(this.state.viewingSize + 3, this.results.length);
+    let newSize = Math.min(this.state.viewingSize + 3, this.state.results.length);
     this.setState({ viewingSize: newSize });
   }
 
   applyFilter(filter) {
     // do something to results
-    console.log(this.filter(computedResults.results, filter));
     this.setState({ results: this.filter(computedResults.results, filter) });
   }
 
@@ -92,7 +102,7 @@ class FilterPanel extends Component {
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>
-                  <div className='material-icons'>search</div>
+                  <Search />
                 </InputAdornment>
               )
             }}
@@ -115,18 +125,22 @@ class FilterPanel extends Component {
         <div className='results'>
           {this.state.results.slice(0, this.state.viewingSize).map(result => {
             return (
-              <div className='singleResult'>
+              <div className={`singleResult ${result.sentiment}`}>
                 <div className='resultHeader'>{result.username}</div>
                 <div className='resultContent'>{result.content}</div>
               </div>
             );
           })}
         </div>
-        <div className='seeMore'>
-          <span onClick={() => this.increaseResultSize.call(this)}>
-            See More
-          </span>
-        </div>
+        {this.state.results.length >= this.state.viewingSize ? (
+          <div className='seeMore'>
+            <span onClick={() => this.increaseResultSize.call(this)}>
+              See More
+            </span>
+          </div>
+        ) : (
+          <div style={{ padding: "20px"}}/>
+        )}
       </Card>
     );
   }

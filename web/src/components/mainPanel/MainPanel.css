@@ -166,6 +166,7 @@
 	border: 1.5px solid #979797;
 	border-radius: 20px;
 	color: #979797;
+	cursor: pointer;
 }
 
 .filterPanel .terms .searchTerm.selected {
@@ -180,6 +181,7 @@
 	color: #01205B;
 	margin-left: 30px;
 	margin-right: 30px;
+	margin-bottom: 40px;
 }
 
 .filterPanel .results .singleResult {
@@ -215,9 +217,65 @@
 	padding-bottom: 40px;
 	text-align: center;
 	color: #646464;
+	cursor: pointer;
 }
 
 
+/*=================================*/
 
+.tablePanel {
+	padding: 10px;
+}
 
+.tablePanel .exportButton {
+	position: relative;
+	left: 83%;
+	top: 10px;
+	color: white;
+	background-color: #012058;
+}
 
+.tablePanel .tableTitle {
+	font-family: SF-Pro-Bold;
+	font-size: 24px;
+	margin-top: 15px;
+	margin-left: 30px;
+	color: #01205B;
+}
+
+.tablePanel .tableSubTitle {
+	font-family: SF-Pro-Regular;
+	font-size: 15px;
+	line-height: 1.4;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 30px;
+	color: #01205B;
+}
+
+.tablePanel .table {
+
+}
+
+.tablePanel .tablehead {
+	font-family: SF-Pro-Bold;
+}
+
+.tablePanel .tablebody {
+
+}
+
+.tablePanel .text {
+	color: white;
+	border-radius: 5px;
+	width: min-content;
+	padding: 2px 12px;
+}
+
+.tablePanel .text.Positive {
+	background-color: #35A01E;	
+}
+
+.tablePanel .text.Negative {
+	background-color: #e6604b;
+}
