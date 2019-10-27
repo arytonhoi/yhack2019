@@ -16,7 +16,7 @@ function SelectablePanel(props) {
               className={cName}
               label={label}
               onClick={() => onSelect()}>
-              {name}
+              {label}
             </div>
           );
         })}
