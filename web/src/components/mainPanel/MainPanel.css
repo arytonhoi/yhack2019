@@ -218,6 +218,49 @@
 }
 
 
+/*=================================*/
 
+.tablePanel {
+	padding: 10px;
+}
 
+.tablePanel .exportButton {
+	position: relative;
+	left: 83%;
+	top: 10px;
+}
 
+.tablePanel .tableTitle {
+
+}
+
+.tablePanel .tableSubTitle {
+
+}
+
+.tablePanel .table {
+
+}
+
+.tablePanel .tablehead {
+
+}
+
+.tablePanel .tablebody {
+
+}
+
+.tablePanel .text {
+	color: white;
+	border-radius: 5px;
+	width: min-content;
+	padding: 2px 12px;
+}
+
+.tablePanel .text.Positive {
+	background-color: #35A01E;	
+}
+
+.tablePanel .text.Negative {
+	background-color: #e6604b;
+}

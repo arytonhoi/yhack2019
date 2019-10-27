@@ -41,6 +41,11 @@ class FilterPanel extends Component {
         matches.push(match);
       }
     }
+
+    if (this.props.sourceFilter) {
+      matches = matches.filter(match => match.source === this.props.sourceFilter);
+    }
+
     return matches;
   }
 

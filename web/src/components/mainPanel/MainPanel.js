@@ -16,6 +16,7 @@ import ToggleablePanel from "./ToggleablePanel";
 import TextPanel from "./TextPanel";
 import ImagePanel from "./ImagePanel";
 import FilterPanel from "./FilterPanel";
+import TablePanel from "./TablePanel";
 
 function renderGeneralInsights() {
   const options = {
@@ -106,6 +107,7 @@ function renderEmployeeSpecific() {
           bodyText='shoutouts have been given to our JetBlue employees in 2019.'
         />
       </div>
+      <TablePanel title='title goes here' subtitle='subttile goes here' />
     </React.Fragment>
   );
 }
@@ -129,8 +131,11 @@ function renderFacebookInsights() {
       />
       <FilterPanel
         title={"Filter Facebook Comments"}
-        titleText={"Search or filter for a keyword to see what customers are saying on JetBlue’s Facebook posts for 2019."}
-        tags={["Entertainment", "Aircraft", "Baggage", "Wi-fi", "Flights"]}
+        titleText={
+          "Search or filter for a keyword to see what customers are saying on JetBlue’s Facebook posts for 2019."
+        }
+        sourceFilter={"facebook"}
+        tags={["flight", "bag", "customer service", "class", "smiles"]}
       />
     </React.Fragment>
   );
