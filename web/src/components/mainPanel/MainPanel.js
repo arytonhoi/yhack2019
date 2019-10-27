@@ -130,7 +130,7 @@ function renderFacebookInsights() {
       <FilterPanel
         title={"Filter Facebook Comments"}
         titleText={"Search or filter for a keyword to see what customers are saying on JetBlue’s Facebook posts for 2019."}
-        tags={["Entertainment Systems", "Aircraft", "Baggage Claims", "Wi-fi", "Flights"]}
+        tags={["Entertainment", "Aircraft", "Baggage", "Wi-fi", "Flights"]}
       />
     </React.Fragment>
   );
