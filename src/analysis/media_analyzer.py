@@ -127,8 +127,8 @@ class MediaAnalyzer:
       refined_results = {'results':refined_nlp_results}
 
       # write raw results to json
-      with open('raw_' + output_json, 'w') as fp:
-        json.dump(raw_results, fp)
+      # with open('raw_' + output_json, 'w') as fp:
+      #   json.dump(raw_results, fp)
 
       # write refined results to json
       with open('refined_' + output_json, 'w') as fp:
@@ -157,15 +157,49 @@ class MediaAnalyzer:
             writer.writerow(row_dict)
 
 
+  # get info
+  def get_media_summary_info(self,json_filename,sources):
+    num_total_posts = 0
+    num_employee_posts = 0
+    sources_count_dict = {}
+    for source in sources:
+      sources_count_dict[source] = 0
+
+    with open(json_filename, mode='r') as json_file:
+      data = json.load(json_file)
+
+      for media_post in data['results']:
+        num_total_posts += 1
+        sources_count_dict[media_post['source']] += 1
+
+        if (len(media_post['employees']) > 0):
+          num_employee_posts += 1
+
+    percent_employee_posts = float(num_employee_posts) / float(num_total_posts)
+    sources_percent_dict = {}
+    for source in sources:
+      sources_percent_dict[source] = float(sources_count_dict[source]) / float(num_total_posts)
+    
+    # print(percent_employee_posts)
+    # print(num_employee_posts)
+    # print(sources_percent_dict)
+    return percent_employee_posts, num_employee_posts, sources_percent_dict
+          
+
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
   parser.add_argument("json_file")
-  parser.add_argument("out")
+  # parser.add_argument("out")
   args = parser.parse_args()
 
   input_json = args.json_file
-  output_file = args.out
+  # output_file = args.out
 
   MediaAnalyzer = MediaAnalyzer()  
   # posts = MediaAnalyzer.analyze_media_posts(input_json, output_file)
-  MediaAnalyzer.make_csv(input_json,output_file)
+  # MediaAnalyzer.make_csv(input_json,output_file)
+  percent_employee_posts, num_employee_posts, sources_percent_dict = MediaAnalyzer.get_media_summary_info(input_json,['facebook','twitter','tripadvisor'])
+
+  print("percent employee posts: {}, num employee posts: {}".format(percent_employee_posts,num_employee_posts))
+  for key,value in sources_percent_dict.items():
+    print("{}, {}".format(key, value))

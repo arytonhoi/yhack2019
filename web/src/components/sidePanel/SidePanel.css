@@ -49,6 +49,7 @@
   padding: 8px 0px;
   padding-right: 30px;
   font-size: 15px;
+  cursor: pointer;
 }
 
 .selectablePanel .menu .menuItem.selected {
