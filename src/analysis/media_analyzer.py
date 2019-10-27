@@ -1,12 +1,63 @@
 from nlp import NLP
+import random
 import argparse
 import json
+import csv
 
 
 class MediaAnalyzer:
   # constructor
   def __init__(self):
     self.nlp = NLP()
+
+
+  def find_month(self, month):
+    prefix = month[0:3].lower()
+    if prefix == 'jan':
+      month_num = 1
+    elif prefix == 'feb':
+      month_num = 2
+    elif prefix == 'mar':
+      month_num = 3
+    elif prefix == 'apr':
+      month_num = 4
+    elif prefix == 'may':
+      month_num = 5
+    elif prefix == 'jun':
+      month_num = 6
+    elif prefix == 'jul':
+      month_num = 7
+    elif prefix == 'aug':
+      month_num = 8
+    elif prefix == 'sep':
+      month_num = 9
+    elif prefix == 'oct':
+      month_num = 10
+    elif prefix == 'nov':
+      month_num = 11
+    elif prefix == 'dec':
+      month_num = 12
+    else:
+      month_num = 0
+    return month_num
+
+  # convert date
+  def convert_date(self, date):
+    if date.lower() == 'yesterday' or date.lower() == 'today':
+      date_string = date.lower()
+    elif (len(date.split()) > 1):
+      # MMM* D*
+      month_num = self.find_month(date.split()[0])
+      print(date)
+      date_string = "{:02d}/{:02d}".format(month_num, int(date.split()[1]))
+    else:
+      # MMMYYYY
+      month_num = self.find_month(date[0:3])
+      # make random day
+      date_string = "{:02d}/{:02d}".format(month_num, random.randint(1,28))
+    
+    print(date_string)
+    return date_string
 
 
   # analyze a list of media posts
@@ -64,7 +115,7 @@ class MediaAnalyzer:
         refined_result['keywords'] = key_words
         refined_result['location'] = locations
         refined_result['employees'] = employees
-        refined_result['content'] = media_post['content']
+        refined_result['content'] = media_post['content'].replace('\n','')
 
         if not 'JetBlue' in refined_result['username']:
           raw_nlp_results.append(raw_nlp_result)
@@ -84,14 +135,37 @@ class MediaAnalyzer:
         json.dump(refined_results, fp)
 
 
+  # convert json file into csv dataset
+  def make_csv(self, json_filename, csv_filename):
+    with open(json_filename, mode='r') as json_file:
+      with open(csv_filename, mode='w') as csv_file:
+        fieldnames = ['employee', 'location', 'source', 'date', 'sentiment', 'comment']
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+      
+        data = json.load(json_file)
+        writer.writeheader()
+        for media_post in data['results']:
+          if len(media_post['employees']) > 0:
+            row_dict = {}
+            row_dict['employee'] = ", ".join(media_post['employees'])
+            row_dict['location'] = " // ".join(media_post['location'][:2])
+            row_dict['source'] = media_post['source']
+            row_dict['date'] = self.convert_date(media_post['date'])
+            row_dict['sentiment'] = 'positive' if (media_post['sentiment_score'] > 0) else 'negative'
+            row_dict['comment'] = media_post['content'].replace('\n','')
+            print(row_dict)
+            writer.writerow(row_dict)
+
+
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
   parser.add_argument("json_file")
-  parser.add_argument("--out", default='test_output.json')
+  parser.add_argument("out")
   args = parser.parse_args()
 
   input_json = args.json_file
-  output_json = args.out
+  output_file = args.out
 
   MediaAnalyzer = MediaAnalyzer()  
-  posts = MediaAnalyzer.analyze_media_posts(input_json, output_json)
+  # posts = MediaAnalyzer.analyze_media_posts(input_json, output_file)
+  MediaAnalyzer.make_csv(input_json,output_file)
