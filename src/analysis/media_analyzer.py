@@ -16,7 +16,10 @@ class MediaAnalyzer:
 
       raw_nlp_results = []
       refined_nlp_results = []
+      count = 1
       for media_post in data['data']:
+        print(count)
+        count += 1
         key_words = []
         locations = []
         employees = []
@@ -37,6 +40,9 @@ class MediaAnalyzer:
         elif source == 'twitter':
           raw_nlp_result['username'] = media_post['content'].split()[0]
           raw_nlp_result['date'] = ""
+        else:
+          raw_nlp_result['username'] = media_post['username']
+          raw_nlp_result['date'] = media_post['date']
 
         # get data for refined result
         for entity in raw_nlp_result['entities']:
@@ -63,8 +69,8 @@ class MediaAnalyzer:
         if not 'JetBlue' in refined_result['username']:
           raw_nlp_results.append(raw_nlp_result)
           refined_nlp_results.append(refined_result)
-          print(refined_result)
-          print("==========")
+          # print(refined_result)
+          # print("==========")
 
       raw_results = {'results':raw_nlp_results}
       refined_results = {'results':refined_nlp_results}

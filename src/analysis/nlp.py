@@ -47,26 +47,24 @@ class NLP:
     api_response = self.client.analyze_entity_sentiment(document, encoding_type=encoding_type)
 
     for entity in api_response.entities:
-        # for mention in entity.mentions:
-        #       print(u"Mention text: {}".format(mention.text.content))
-        #       # Get the mention type, e.g. PROPER for proper noun
-        #       print(
-        #           u"Mention type: {}".format(enums.EntityMention.Type(entity.mentions[0].type).name)
-        #       )
-        
-        
-        entity_salience = entity.salience
-        if entity_salience > salience_threshold:
-          if enums.EntityMention.Type(entity.mentions[0].type).name == 'PROPER':
-            entity_type = 'NAME'
-          else:
-            entity_type = enums.Entity.Type(entity.type).name
-          entities.append({'value': entity.name, 
-                          'type': entity_type, 
-                          'salience': entity.salience, 
-                          'sentiment': {'score': entity.sentiment.score, 
-                                        'magnitude': entity.sentiment.magnitude}
-                          })
+      is_proper = False
+      for mention in entity.mentions:
+        if (enums.EntityMention.Type(mention.type).name == 'PROPER'):
+          # print(mention.text.content)
+          is_proper = True
+      
+      entity_salience = entity.salience
+      if entity_salience > salience_threshold:
+        if is_proper and (enums.Entity.Type(entity.type).name == 'PERSON'):
+          entity_type = 'NAME'
+        else:
+          entity_type = enums.Entity.Type(entity.type).name
+        entities.append({'value': entity.name, 
+                        'type': entity_type, 
+                        'salience': entity.salience, 
+                        'sentiment': {'score': entity.sentiment.score, 
+                                      'magnitude': entity.sentiment.magnitude}
+                        })
     return entities 
 
 
