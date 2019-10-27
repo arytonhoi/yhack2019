@@ -18,14 +18,14 @@ class FilterPanel extends Component {
   }
 
   filter(results, filter) {
-    var matches = [];
+    let matches = [];
 
-    for (var i = 0; i < results.length; i++) {
+    for (let i = 0; i < results.length; i++) {
       let result = results[i];
       if (result.keywords.includes(filter)) {
-        var match = {};
+        let match = {};
 
-        var sentiment;
+        let sentiment;
         if (result.sentiment_score < 0) {
           sentiment = "negative";
         } else {
@@ -38,7 +38,7 @@ class FilterPanel extends Component {
         match["location"] = result.location[0];
         match["content"] = result.content;
 
-        matches.push(result);
+        matches.push(match);
       }
     }
     return matches;
