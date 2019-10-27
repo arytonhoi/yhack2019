@@ -1,15 +1,36 @@
 .mainPanel {
-  /* TODO */
-  flex: 1;
-  padding: 50px;
-  display: flex;
-  flex-direction: column;
+	/* TODO */
+	flex: 1;
+	padding: 50px;
+	display: flex;
+	flex-direction: column;
+	background-color: #F2F3F6;
 }
 
+.mainPanel .bigTitle {
+	font-family: SF-Pro-Bold;
+	font-size: 45px;
+	margin-top: 40px;
+	margin-left: 30px;
+	color: #01205B;
+}
+
+.mainPanel .bigTitleText {
+	font-family: SF-Pro-Regular;
+	font-size: 17px;
+	margin-top: 14px;
+	margin-bottom: 32px;
+	margin-left: 30px;
+	color: #01205B;
+}
+
+/*=================================*/
+
 .card {
-  margin: 10px;
-  flex: 1;
-  width: 100%;
+	background-color: white;
+	margin: 10px;
+	flex: 1;
+	width: 100%;
 	font-family: SF-Pro-Regular;
 	box-shadow: 0px 9px 26px -4px rgba(97,97,97,0.5);
 	border-radius: 10px;
@@ -51,25 +72,26 @@
 
 }
 
+/*=================================*/
+
 .textPanel {
-  /* TODO */
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 
 }
 
 .textPanel .bolded {
-  /* TODO */
-
+	font-family: SF-Pro-Bold;
+	font-size: 64px;
+	color: #4BB3FF;
 }
 
 .textPanel .body {
-  /* TODO */
-
-}
-
-.mainPanel .bigTitle {
-
-}
-
-.mainPanel .bigTitleText {
-
+	margin-top: -96px;
+	line-height: 1.4;
+	width: 50%;
+	color: #01205B;
 }
