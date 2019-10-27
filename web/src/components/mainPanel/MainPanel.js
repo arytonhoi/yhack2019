@@ -93,7 +93,7 @@ function renderEmployeeSpecific() {
             backgroundImage: `url(${shortBarStatsBGImage})`,
             backgroundSize: "100%"
           }}
-          boldedText='25%'
+          boldedText='13%'
           bodyText='of our 2019 social media comments are about our employees.'
         />
         <TextPanel
@@ -102,7 +102,7 @@ function renderEmployeeSpecific() {
             backgroundImage: `url(${shortLineStatsBGImage})`,
             backgroundSize: "100%"
           }}
-          boldedText='40%'
+          boldedText='202'
           bodyText='shoutouts have been given to our JetBlue employees in 2019.'
         />
       </div>
@@ -120,7 +120,7 @@ function renderFacebookInsights() {
           backgroundSize: "110%",
           height: "240px"
         }}
-        boldedText='50%'
+        boldedText='32%'
         bodyText='of our 2019 social media comments is comprised of Facebook comments.'
       />
       <ImagePanel
@@ -130,7 +130,7 @@ function renderFacebookInsights() {
       <FilterPanel
         title={"Filter Facebook Comments"}
         titleText={"Search or filter for a keyword to see what customers are saying on JetBlue’s Facebook posts for 2019."}
-        tags={["Entertainment", "Aircraft", "Baggage", "Wi-fi", "Flights"]}
+        tags={["entertainment", "aircraft", "baggage", "wi-fi", "flights"]}
       />
     </React.Fragment>
   );
