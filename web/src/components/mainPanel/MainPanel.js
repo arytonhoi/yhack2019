@@ -61,7 +61,7 @@ function renderEmployeeSpecific() {
     <React.Fragment>
       {renderTitle("Employee-Specific Comments")}
       {renderTitleText("View Some blah blah blah")}
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{ display: "flex", flexDirection: "row", height: "300px" }}>
         <TextPanel
           style={{ flex: 1 }}
           boldedText='25%'
