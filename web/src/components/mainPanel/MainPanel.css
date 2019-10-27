@@ -1,9 +1,13 @@
 .mainPanel {
-	/* TODO */
+  /* TODO */
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card {
-	margin: 50px auto;
+  width: 100%;
 	font-family: SF-Pro-Regular;
 	box-shadow: 0px 9px 26px -4px rgba(97,97,97,0.5);
 	border-radius: 10px;
@@ -13,7 +17,6 @@
 	/* TODO */
 	display: flex;
 	flex-direction: column;
-	width: 800px;
 }
 
 .toggleablePanel .header {
@@ -27,7 +30,7 @@
 }
 
 .toggleablePanel .header .toggleBar {
-	width: 46%;
+	width: 380px;
 	margin: auto;
 	border-bottom: 1px solid #8D99B5;
 	display: flex;
