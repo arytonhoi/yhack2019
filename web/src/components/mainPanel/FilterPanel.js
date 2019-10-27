@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Card from "./Card";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import Search from "@material-ui/icons/Search";
 import computedResults from "../../../public/computed.json";
 
 class FilterPanel extends Component {
@@ -58,7 +59,7 @@ class FilterPanel extends Component {
   }
 
   increaseResultSize() {
-    let newSize = Math.min(this.state.viewingSize + 3, this.results.length);
+    let newSize = Math.min(this.state.viewingSize + 3, this.state.results.length);
     this.setState({ viewingSize: newSize });
   }
 
@@ -92,7 +93,7 @@ class FilterPanel extends Component {
             InputProps={{
               startAdornment: (
                 <InputAdornment position='start'>
-                  <div className='material-icons'>search</div>
+                  <Search />
                 </InputAdornment>
               )
             }}
@@ -115,18 +116,22 @@ class FilterPanel extends Component {
         <div className='results'>
           {this.state.results.slice(0, this.state.viewingSize).map(result => {
             return (
-              <div className='singleResult'>
+              <div className={`singleResult ${result.sentiment}`}>
                 <div className='resultHeader'>{result.username}</div>
                 <div className='resultContent'>{result.content}</div>
               </div>
             );
           })}
         </div>
-        <div className='seeMore'>
-          <span onClick={() => this.increaseResultSize.call(this)}>
-            See More
-          </span>
-        </div>
+        {this.state.results.length >= this.state.viewingSize ? (
+          <div className='seeMore'>
+            <span onClick={() => this.increaseResultSize.call(this)}>
+              See More
+            </span>
+          </div>
+        ) : (
+          <div />
+        )}
       </Card>
     );
   }
