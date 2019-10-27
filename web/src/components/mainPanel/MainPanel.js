@@ -29,7 +29,7 @@ function renderGeneralInsights() {
   return (
     <React.Fragment>
       {renderTitle("General Insights")}
-      {renderTitleText("View the blah blah blah")}
+      {renderTitleText("View the most current trending words our customers are saying across social media about JetBlue’s cusomter and in-flight service.")}
       <ToggleablePanel on={options.on} off={options.off} />
     </React.Fragment>
   );
@@ -60,17 +60,17 @@ function renderEmployeeSpecific() {
   return (
     <React.Fragment>
       {renderTitle("Employee-Specific Comments")}
-      {renderTitleText("View Some blah blah blah")}
+      {renderTitleText("View employee-specific feedback and shoutouts directly from our customers.")}
       <div style={{ display: "flex", flexDirection: "row" }}>
         <TextPanel
           style={{ flex: 1 }}
           boldedText='25%'
-          bodyText='A lot of gibberish goes here'
+          bodyText='of our 2019 social media comments are specific to our employees.'
         />
         <TextPanel
           style={{ flex: 1 }}
           boldedText='40%'
-          bodyText='A lot of gibberish goes here'
+          bodyText='different shoutouts have been given to our JetBlue employees in 2019.'
         />
       </div>
     </React.Fragment>
@@ -101,7 +101,7 @@ function MainPanel(props) {
       {renderCorrectPanel(props.selected)}
       <TextPanel
         boldedText='50%'
-        bodyText='Here is some arbitrrary long description for somthing'
+        bodyText='of our 2019 social media comments is comprised of Facebook comments.'
       />
     </div>
   );
