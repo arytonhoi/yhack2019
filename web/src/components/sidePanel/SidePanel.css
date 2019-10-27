@@ -1,0 +1,46 @@
+.sidePanel {
+  /* TODO */
+  width: 300px;
+  text-align: right;
+  background-color: darkblue;
+  color: white;
+}
+
+.staticSidePanel {
+  /* TODO */
+  position: relative;
+  top: 10%;
+}
+
+.staticSidePanel .title {
+  /* TODO */
+  font-size: 36px;
+  font-weight: bold;
+  margin-right: 30px;
+  margin-bottom: 30px; 
+}
+
+.selectablePanel {
+  /* TODO */
+
+}
+
+.selectablePanel .header {
+  /* TODO */
+
+}
+
+.selectablePanel .menu {
+  /* TODO */
+
+}
+
+.selectablePanel .menu .menuItem {
+  /* TODO */
+
+}
+
+.selectablePanel .menu .menuItem.selected {
+  /* TODO */
+
+}
