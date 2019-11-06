@@ -5,13 +5,17 @@ YHack 2019 submission - Awarded **Best Website**
 
 - [Team members](#team-members)
 - [Inspiration](#what-inspired-us)
-- [What Our Project Does](#what-out-project-does)
-- [How we did it](#How-we-designed-and-built-BlueVisuals-and-Humans-of-JetBlue)
+- [What Our Project Does](#what-our-project-does)
+- [How we did it](#how-we-designed-and-built-BlueVisuals-and-Humans-of-JetBlue)
 
 
 ---
 
 ## Team members:
+Aryton Hoi 
+Paul Rhee
+[Celine Yan](https://celineyan.me)
+[Kevin Zhang]
 
 ---
 
