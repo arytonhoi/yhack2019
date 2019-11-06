@@ -3,10 +3,10 @@
 YHack 2019 submission - Awarded **Best Website**
 [Devpost](https://devpost.com/software/humans-of-jetblue)
 
-**Table of Contents**
-
 - [Team members](#team-members)
-- [My second title](#my-second-title)
+- [Inspiration](#what-inspired-us)
+- [What Our Project Does](#what-out-project-does)
+- [How we did it](#How-we-designed-and-built-BlueVisuals-and-Humans-of-JetBlue)
 
 
 ---
