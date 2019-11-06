@@ -1,6 +1,7 @@
 # BlueVisuals
 
 YHack 2019 submission - Awarded **Best Website**
+
 [Devpost](https://devpost.com/software/humans-of-jetblue)
 
 - [Team members](#team-members)
