@@ -22,7 +22,13 @@ YHack 2019 submission - Awarded **Best Website**
 
 ## What Inspired Us
 
-A good customer experience leaves a lasting impression across every stage of their journey. This is exemplified in the airline and travel industry. To give credit and show appreciation to the hardworking employees of JetBlue, we chose to scrape and analyze customer feedback on review and social media sites to both highlight their impact on customers and provide currently untracked, valuable data to build a more personalized brand that outshines its market competitors.
+> “Be hearty in your approbation and lavish in your praise, and people will cherish your words and treasure them and repeat them over a lifetime - repeat them years after you have forgotten them.” - Dale Carnegie
+
+BlueVisuals is a customer review analytics dashboard for JetBlue that specifically focused on employee-related reviews. For example, one Facebook comment thanked “Jeff from JetBlue” for his kindness and attention. Although we were primarily submitting to JetBlue’s challenge in pursuit of free round-trip tickets, we also chose to center our project around the airline employees because we wanted to give JetBlue a product which reminded their employees that they are appreciated. 
+
+Things can be “cool” for many reasons, but for us, we felt that it would be cool if our project could instill happiness in others, even if it was as simple as showing them a Facebook comment.
+
+> A good customer experience leaves a lasting impression across every stage of their journey. This is exemplified in the airline and  travel industry. To give credit and show appreciation to the hardworking employees of JetBlue, we chose to scrape and analyze customer feedback on review and social media sites to both highlight their impact on customers and provide currently untracked, valuable data to build a more personalized brand that outshines its market competitors.
 
 ## What Our Project does
 
