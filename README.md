@@ -1,7 +1,17 @@
 # BlueVisuals
 
-**Devpost:** https://devpost.com/software/humans-of-jetblue
-YHack 2019 submission
+YHack 2019 submission - Awarded **Best Website**
+[Devpost](https://devpost.com/software/humans-of-jetblue)
+
+**Table of Contents**
+
+- [Team members](#team-members)
+- [My second title](#my-second-title)
+
+
+---
+
+## Team members:
 
 ---
 
