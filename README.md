@@ -12,10 +12,11 @@ YHack 2019 submission - Awarded **Best Website**
 ---
 
 ## Team members:
-Aryton Hoi 
-Paul Rhee
-[Celine Yan](https://celineyan.me)
-[Kevin Zhang]
+
+- [Paul Rhee](https://github.com/paulrhee)
+- [Celine Yan](https://celineyan.me)
+- [Kevin Zhang](https://github.com/fdwraith)
+- [Aryton Hoi](https://github.com/arytonhoi)
 
 ---
 
