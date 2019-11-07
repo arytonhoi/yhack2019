@@ -4,7 +4,7 @@ YHack 2019 submission - Awarded **Best Website**
 
 [Devpost](https://devpost.com/software/humans-of-jetblue)
 
-![Preview of website](https://github.com/arytonhoi/yhack2019/blob/master/general_insights.jpg)
+![Preview of website](https://github.com/arytonhoi/yhack2019/blob/master/employee-specific.jpg)
 
 - [Team members](#team-members)
 - [Inspiration](#what-inspired-us)
@@ -16,7 +16,7 @@ YHack 2019 submission - Awarded **Best Website**
 
 ## Team members:
 
-
+![Teammates yay c:](https://github.com/arytonhoi/yhack2019/blob/master/team.jpg)
 
 - [Paul Rhee](https://github.com/paulrhee)
 - [Celine Yan](https://celineyan.me)
